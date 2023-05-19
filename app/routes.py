@@ -1,23 +1,14 @@
 from app import app
-from flask import render_template
+from flask import render_template, request
+from app.models import User, CPU
 
-
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods =["GET", "POST"])
 def index():
-    user = {'username': 'Эльдар Рязанов'}
-    posts = [
-        {
-            'author': {'username': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        },
-        {
-            'author': {'username': 'Ипполит'},
-            'body': 'Какая гадость эта ваша заливная рыба!!'
-        }
-    ]
-    return render_template('index.html', title='Home', user=user, posts=posts)
+
+    if request.method == "POST":
+        name = request.form['fname']
+        info = CPU.query.filter(CPU.name == name)
+        return render_template('cpu_info.html', title=f"CPU {name}", info=info)
+
+    cpus = CPU.query.all()
+    return render_template('index.html', title='CPU', cpus=cpus)

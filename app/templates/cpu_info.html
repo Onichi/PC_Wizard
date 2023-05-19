@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for info in info%}
+<center><h1 style="color: white; margin-left: auto; margin-right: auto;">Характеристики процессора: {{info.name}}</h1></center>
+     <div class="table-responsive d-lg-flex" style="width: 40%;margin-top: 2%; margin-left: auto; margin-right: auto;">
+        <table class="table table-bordered">
+            <thead style="background: #282d32;color: rgb(255,255,255);">
+                <tr>
+                    <th>Название</th>
+                    <th>{{info.name}}</th>
+                </tr>
+            </thead>
+            <tbody style="background: #373d44;color: rgb(255,255,255);">
+
+               <tr><td class="gr3">Ядро</td><td class="gr1">{{info.Core}}</td></tr>
+               <tr><td class="gr3">Количество ядер</td><td class="gr2">{{info.Number_of_Cores}}</td></tr>
+               <tr><td class="gr3">Количество потоков</td><td class="gr1">{{info.Number_of_threads}}</td></tr>
+               <tr><td class="gr3">Техпроцесс, нм</td><td class="gr2">{{info.Process_technology}}</td></tr>
+               <tr><td class="gr3">Разъем</td><td class="gr1">{{info.Connector}}</td></tr>
+               <tr><td class="gr3">Частота, МГц</td><td class="gr2">{{info.Frequency}}</td></tr>
+               <tr><td class="gr3">Множитель</td><td class="gr1">{{info.Multiplier}}</td></tr>
+               <tr><td class="gr3">HTT/Bclk</td><td class="gr2">{{info.HTT_Bclk}}</td></tr>
+               <tr><td class="gr3">Тип памяти</td><td class="gr1">{{info.Memory_type}}</td></tr>
+               <tr><td class="gr3">кэш L1, КБ</td><td class="gr2">{{info.L1_cache}}</td></tr>
+               <tr><td class="gr3">кэш L2, КБ</td><td class="gr1">{{info.L2_cache}}</td></tr>
+               <tr><td class="gr3">кэш L3, КБ</td><td class="gr2">{{info.L3_cache}}</td></tr>
+               <tr><td class="gr3">Напряжение питания, В</td><td class="gr1">{{info.Supply_voltage}}</td></tr>
+               <tr><td class="gr3">TDP, Вт</td><td class="gr2">{{info.TDP}}</td></tr>
+               <tr><td class="gr3">Кол-во транзисторов, млн</td><td class="gr1">{{info.Number_of_transistors}}</td></tr>
+               <tr><td class="gr3">Площадь кристалла, кв. мм</td><td class="gr2">{{info.Crystal_area}}</td></tr>
+               <tr><td class="gr3">Предельная температура, °C</td><td class="gr1">{{info.Limit_temperature}}</td></tr>
+               <tr><td class="gr3">Набор инструкций</td><td class="gr2">{{info.Instruction_set}}</td></tr>
+               <tr><td class="gr3">Прочие особенности</td><td class="gr1">{{info.Other_Features}}</td></tr>
+               <tr><td class="gr3">Дата выпуска</td><td class="gr2">{{info.Date_of_issue}}</td></tr>
+               <tr><td class="gr3">Стоимость, $</td><td class="gr1">?</td></tr>
+            </tbody>
+        </table>
+    </div>
+{% endfor%}
+{% endblock %}

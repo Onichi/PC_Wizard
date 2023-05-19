@@ -6,24 +6,32 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
-    password_hash = db.Column(db.String(128))
-    posts = db.relationship('Post', backref='author', lazy='dynamic')
-
-    def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
-
-    def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
-
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
-
-class Post(db.Model):
+class CPU(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String(140))
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    name = db.Column(db.String(64), index=True, unique=True)
+    Core = db.Column(db.String(64))
+    Number_of_Cores = db.Column(db.String(64))
+    Number_of_threads = db.Column(db.String(64))
+    Process_technology = db.Column(db.String(64))
+    Connector = db.Column(db.String(64))
+    Frequency = db.Column(db.String(64))
+    Multiplier = db.Column(db.String(64))
+    HTT_Bclk = db.Column(db.String(64))
+    Memory_type = db.Column(db.String(64))
+    L1_cache = db.Column(db.String(64))
+    L2_cache = db.Column(db.String(64))
+    L3_cache = db.Column(db.String(64))
+    Supply_voltage = db.Column(db.String(64))
+    TDP = db.Column(db.String(64))
+    Number_of_transistors = db.Column(db.String(64))
+    Crystal_area = db.Column(db.String(64))
+    Limit_temperature = db.Column(db.String(64))
+    Instruction_set = db.Column(db.String(64))
+    Other_Features = db.Column(db.String(64))
+    Date_of_issue = db.Column(db.String(64))
+    Cost = db.Column(db.String(64))
 
-    def __repr__(self):
-        return '<Post {}>'.format(self.body)
+
